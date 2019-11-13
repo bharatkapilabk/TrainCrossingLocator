@@ -10,29 +10,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Data">
-
-        </activity>
-        <activity android:name=".Map"></activity>
+        <activity android:name=".ViewTrains" />
+        <activity android:name=".Data" />
+        <activity android:name=".Map" />
         <activity android:name=".RegWithMob" />
         <activity android:name=".RegWithGoogle" />
         <activity android:name=".LogIn" />
-        <activity android:name=".LoginOrCreate">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".LoginOrCreate"></activity>
         <activity
             android:name=".SignUp"
             android:parentActivityName=".LoginOrCreate" />
         <activity
             android:name=".Home"
             android:parentActivityName=".Home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".splash" />
+        <activity android:name=".splash"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -45,8 +42,8 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
