@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +46,11 @@ LinearLayout shareapp,viewtrains,viewcrossings,iiiii;
 FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
 DatabaseReference databaseReference=firebaseDatabase.getReference("Data").child("Status");
 DatabaseReference databaseReference1=firebaseDatabase.getReference("Data").child("Time");
+FirebaseAuth mAuth;
+FirebaseUser user;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +77,8 @@ DatabaseReference databaseReference1=firebaseDatabase.getReference("Data").child
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
         String timeUntilClose=simpleDateFormat.format(calendar.getTime());
         Toast.makeText(this, timeUntilClose, Toast.LENGTH_SHORT).show();
+
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -102,24 +111,21 @@ nav.setOnClickListener(new View.OnClickListener() {
                 float scaleFactor = (max - ((max - min) * slideOffset));
                 }
         };
-        /*mNavItemListner=new NavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Toast.makeText(Home.this,"View Trains", Toast.LENGTH_LONG).show();
-                Log.d("sd", "xgfdgd");
-            return true;
-            }
-        };*/
         drawer_layout.addDrawerListener(mDrawerToggle);
     }
 });
         navigation_view.setNavigationItemSelectedListener(this);
             }
-
+    /*@Override
+    protected void onStart() {
+        super.onStart();
+        firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser == null) {
+            sendToLogin();
+        }
+    }*/
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         finish();
     }
 
@@ -137,7 +143,7 @@ else if(id==R.id.viewcrossings){
             Toast.makeText(Home.this,"View Crossings", Toast.LENGTH_LONG).show();
         }
 else if(id==R.id.feedback){
-            Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.google.com"));
+            Intent browserIntent = new Intent("android.intent.action.VIEW", Uri.parse("https://www.surveymonkey.com/r/3DCJKN9"));
             startActivity(browserIntent);
         }
 else if(id==R.id.shareapp){
@@ -153,6 +159,16 @@ else if(id==R.id.shareapp){
                 //e.toString();
             }
         }
+else if(id==R.id.logout){
+            FirebaseAuth.getInstance().signOut();
+            sendToLogin();
+        }
 return true;
+    }
+
+    private void sendToLogin() {
+        Intent loginIntent = new Intent(Home.this, LoginOrCreate.class);
+        startActivity(loginIntent);
+        finish();
     }
 }

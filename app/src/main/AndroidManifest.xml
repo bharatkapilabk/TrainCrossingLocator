@@ -23,13 +23,15 @@
         <activity
             android:name=".Home"
             android:parentActivityName=".Home">
+
+        </activity>
+        <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".splash"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

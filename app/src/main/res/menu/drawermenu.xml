@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group        >
+    <item android:id="@+id/viewtrains" android:title="View Trains" android:icon="@drawable/ic_view_black_24dp" />
+    <item android:id="@+id/viewcrossings" android:title="View Crossings" android:icon="@drawable/ic_view_black_24dp" />
+        <item android:id="@+id/logout" android:title="Logout" android:icon="@drawable/ic_close_black_24dp"></item>
+    </group>
+    <item android:id="@+id/feedback" android:title="Feedback" android:icon="@drawable/ic_feedback_black_24dp" />
+    <item android:id="@+id/shareapp" android:title="Share App" android:icon="@drawable/ic_share_black_24dp" />
+
+</menu>
